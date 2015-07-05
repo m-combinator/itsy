@@ -8,17 +8,19 @@
             [itsy.robots :as robots]
             [slingshot.slingshot :refer [get-thrown-object try+]])
   (:import (java.net URL)
-           (java.util.concurrent LinkedBlockingQueue TimeUnit)))
+           (java.util.concurrent LinkedBlockingQueue TimeUnit)
+           (org.apache.commons.validator.routines UrlValidator)))
 
 (def terminated Thread$State/TERMINATED)
+(def url-validator (new UrlValidator))
+
 
 (defn valid-url?
   "Test whether a URL is valid, returning a map of information about it if
   valid, nil otherwise."
   [url-str]
-  (try
-    (url url-str)
-    (catch Exception _ nil)))
+  (when (. url-validator isValid url-str)
+    (url url-str)))
 
 (defn- enqueue*
   "Internal function to enqueue a url as a map with :url and :count."
