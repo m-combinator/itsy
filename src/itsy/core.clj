@@ -229,7 +229,7 @@
         host-limiter (cond
                       (string? hl) (try (:host (url hl))
                                         (catch Exception _ hl))
-                      (= true hl) (:host (url (:url options)))
+                      (true? hl) (:host (url (:url options)))
                       :else hl)
         _ (trace :host-limiter host-limiter)
         config (merge {:workers 5
