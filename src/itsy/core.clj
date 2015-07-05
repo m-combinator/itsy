@@ -57,6 +57,8 @@
 
 (def url-regex #"https?://[-A-Za-z0-9+&@#/%?=~_|!:,.;]*[-A-Za-z0-9+&@#/%=~_|]")
 
+
+;; FIXME: better to use tika to extract urls from webpage
 (defn extract-all
   "Dumb URL extraction based on regular expressions. Extracts relative URLs."
   [original-url body]
