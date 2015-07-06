@@ -187,6 +187,10 @@ Usage:
 - <del>Have threads auto-clean when url-limit is hit</del>
 - <del>Use Tika for HTML extraction</del>
 - Write tests
+- Write function for calculating statistics (how many pages crawled per second).
+- Add deny and allow rules in the options (for example, if crawler should or shouldn't visit certain urls that have some pattern).
+- Add delay between consecutive hits on the same server.
+- Instead of a single start url, add support for multiple start urls.
 
 ## License
 
